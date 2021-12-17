@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  # user service db
+  userdb:
+    image: mysql:latest
+    cap_add:
+      - SYS_NICE
+    volumes:
+      - user_db:/var/lib/mysql
+      - ./docker/provision/mysql/init:/docker-entrypoint-initdb.d
+    restart: always
+    ports:
+      - 3306:3306
+      - 33060:33060
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+  # user login token cache
+  redis:
+    image: redis
+    restart: always
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
+  # Dubbo registry
+  zookeeper:
+    image: zookeeper
+    restart: always
+    ports:
+      - 2181:2181
+
+volumes:
+  user_db: {}
+  redis_data: {}

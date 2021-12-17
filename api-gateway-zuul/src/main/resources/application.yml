@@ -1,0 +1,25 @@
+spring:
+    application:
+        name: api-zuul-gateway
+server:
+    port: 8080
+eureka:
+    instance:
+        hostname: localhost
+    client:
+        service-url:
+            defaultZone: http://localhost:8081/eureka/
+zuul:
+    prefix: /api
+    routes:
+        user:
+            path: /user/**
+            serviceId: user-edge-service
+            strip-prefix: false
+        course:
+            path: /course/**
+            serviceId: course-edge-service
+            strip-prefix: false
+    host:
+        connect-timeout-millis: 15000
+        socket-timeout-millis: 60000
