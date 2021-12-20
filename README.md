@@ -1,7 +1,7 @@
 # java-microservice-demo
 
 ## Architecture
-![image](https://user-images.githubusercontent.com/11530457/146609872-2b0cb1bd-12fa-4444-9ef8-acf30bc64735.png)
+![Blank diagram](https://user-images.githubusercontent.com/11530457/146709243-b258c109-a998-462d-8d81-b8d1bc10f1d9.png)
 
 ## Serivces
 
